@@ -43,9 +43,10 @@ jobs:
                        body = "@smasongarrison, this is a reminder to please grade me. I will reappear every 48 hours until you close this issue.")
               }
             }
-
           }
         shell: Rscript {0}
       - name: Ping Mason
-        run: Rscript -e 'ds4psych_grading("jdtrat/ds4psych_actions")'
+        run: Rscript -e 'ds4psych_grading($PATH)'
+        env:
+          PATH: jdtrat/ds4psych_actions
         shell: Rscript {0}
