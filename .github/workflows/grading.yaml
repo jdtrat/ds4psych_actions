@@ -43,5 +43,5 @@ jobs:
               }
             }
         env:
-          current_repo: ${{ GITHUB_REPOSITORY }}
+          current_repo: ${{ secrets.GITHUB_REPOSITORY }}
         shell: Rscript {0}
