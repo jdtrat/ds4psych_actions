@@ -23,10 +23,9 @@ jobs:
           install.packages(c("devtools", "jsonlite", "gh"))
           devtools::install_github("jdtrat/simplegit")
         shell: Rscript {0}
-      - name: Load Script
+      - name: Ping Mason
         run: |
-          ds4psych_grading <- function(path) {
-
+            path <- $GITHUB_REPOSITORY
             # If Mason is not a collaborator, send her an invite and tag her in an issue
             if (!gh_collab_check(path, "smasongarrison", messages = FALSE)) {
               gh_collab_invite(path, "smasongarrison")
@@ -44,9 +43,4 @@ jobs:
               }
             }
           }
-        shell: Rscript {0}
-      - name: Ping Mason
-        run: Rscript -e 'ds4psych_grading($ {{ PATH }})'
-        env:
-          PATH: jdtrat/ds4psych_actions
         shell: Rscript {0}
