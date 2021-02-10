@@ -25,7 +25,7 @@ jobs:
         shell: Rscript {0}
       - name: Ping Mason
         run: |
-            path <- ${{ GITHUB_REPOSITORY }}
+            path <- current_repo
             # If Mason is not a collaborator, send her an invite and tag her in an issue
             if (!gh_collab_check(path, "smasongarrison", messages = FALSE)) {
               gh_collab_invite(path, "smasongarrison")
@@ -42,4 +42,6 @@ jobs:
                        body = "@smasongarrison, this is a reminder to please grade me. I will reappear every 48 hours until you close this issue.")
               }
             }
+        env:
+          current_repo: ${{ GITHUB_REPOSITORY }}
         shell: Rscript {0}
