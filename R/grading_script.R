@@ -12,6 +12,7 @@ ds4psych_grading <- function(path) {
       # Assign Mason to those -- nothing happens if we reassign
       which_issues <- as.numeric(gh_issue_list(path, mentioned = "smasongarrison")$number)
       lapply(which_issues, gh_issue_assign, path = path, assignees = "smasongarrison")
+      # Add a comment pinging Mason to remind her!
       lapply(which_issues, gh_issue_comment, path = path,
              body = "@smasongarrison, this is a reminder to please grade me. I will reappear every 48 hours until you close this issue.")
     }

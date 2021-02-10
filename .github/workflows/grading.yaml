@@ -28,5 +28,5 @@ jobs:
           source("R/grading_script.R")
         shell: Rscript {0}
       - name: Ping Mason
-        run: Rscript -e 'ds4psych_grading("$GITHUB_REPOSITORY")'
+        run: Rscript -e 'ds4psych_grading("${{GITHUB_REPOSITORY}}")'
 
