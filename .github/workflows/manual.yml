@@ -40,4 +40,6 @@ jobs:
                        body = "@smasongarrison, this is a reminder to please grade me. I will reappear every 48 hours until you close this issue.")
               }
             }
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
         shell: Rscript {0}
