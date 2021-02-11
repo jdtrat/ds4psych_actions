@@ -1,14 +1,9 @@
 my_repo <- Sys.getenv("MY_GITHUB_REPO")
 
-path <- unlist(strsplit(my_repo, split = "/"))
-
-gh::gh("POST / repos/{owner}/{repo}/issues",
-       owner = path[1],
-       repo = path[2],
-       title = "Does this work?",
-       body = "I really hope so @smasongarrison. I'm almost there? Maybe?",
-       .token = Sys.getenv("GITHUB_PAT"))
-
+simplegit::gh_issue_new(path = my_repo,
+                        title = "Hello? Does this work?",
+                        body = "I hope so! @smasongarrison ! I'm close thanks to Tan.",
+                        .token = Sys.getenv("GITHUB_PAT"))
 
 # ds4psych_grading <- function(path) {
 #
