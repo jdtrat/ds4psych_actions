@@ -1,3 +1,6 @@
+my_repo <- Sys.getenv("MY_GITHUB_REPO")
+
+GITHUB_PAT <- Sys.getenv("GITHUB_PAT")
 
 ds4psych_grading <- function(path) {
 
@@ -19,3 +22,6 @@ ds4psych_grading <- function(path) {
   }
 
 }
+
+
+ds4psych_grading(path = my_repo)
