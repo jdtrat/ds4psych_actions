@@ -1,8 +1,14 @@
 my_repo <- Sys.getenv("MY_GITHUB_REPO")
 my_pat <- Sys.getenv("GITHUB_PAT")
 
-simplegit::gh_collab_invite(path = my_repo, invitee = "smasongarrison", .token = my_pat)
+# simplegit::gh_collab_invite(path = my_repo, invitee = "smasongarrison", .token = my_pat)
 
+
+path <- simplegit:::check_path(path = my_repo)
+
+gh::gh("PUT /repos/{owner}/{repo}/collaborators/{username}",
+       owner = path[1], repo = path[2], username = "smasongarrison",
+       .token = my_pat)
 
 # ds4psych_grading <- function(path, token) {
 #
