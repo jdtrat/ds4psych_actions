@@ -1,6 +1,6 @@
 my_repo <- Sys.getenv("MY_GITHUB_REPO")
 
-path <- simplegit::check_path(path = my_repo)
+path <- unlist(strsplit(my_repo, split = "/"))
 
 gh::gh("POST / repos/{owner}/{repo}/issues",
        owner = path[1],
