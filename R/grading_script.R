@@ -3,13 +3,13 @@ my_pat <- Sys.getenv("GITHUB_PAT")
 
 ds4psych_grading <- function(path, token) {
 
-  print(simplegit::gh_collab_check(path, "smasongarrison", .token = token, messages = FALSE))
-  #
-  # # If Mason is not a collaborator, send her an invite and tag her in an issue
-  # if (!simplegit::gh_collab_check(path, "smasongarrison", .token = token, messages = FALSE)) {
-  #   simplegit::gh_collab_invite(path, "smasongarrison", .token = token)
-  #   simplegit::gh_issue_new(path, title = "Please grade me!", body = "@smasongarrison, I've finished my lab. Please grade me!", .token = token)
-  # }
+  # If Mason is not a collaborator, send her an invite and tag her in an issue
+  if (!simplegit::gh_collab_check(path = path, "smasongarrison", .token = token, messages = FALSE)) {
+    print("here!?")
+    simplegit::gh_collab_invite(path = path, "smasongarrison", .token = token)
+    simplegit::gh_issue_new(path = path, title = "Please grade me!", body = "@smasongarrison, I've finished my lab. Please grade me!", .token = token)
+  }
+
 }
 #   }} else {
 #     # if Mason is a collaborator, check to see whether there are any issues that mention her.
