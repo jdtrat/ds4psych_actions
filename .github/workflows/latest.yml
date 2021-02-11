@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+
+name: Grading-Script-Latest
+
+jobs:
+  Grading-Script-Latest:
+    runs-on: macOS-latest
+    env:
+      MY_GITHUB_REPO: ${{ github.repository }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "jsonlite", "gh"))
+          remotes::install_github("jdtrat/simplegit")
+        shell: Rscript {0}
+      - name: Ping Mason
+        run: |
+          source("R/grading_script.R")
+        shell: Rscript {0}
