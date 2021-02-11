@@ -1,11 +1,6 @@
-on:
-  push:
-    branches:
-      - main
-      - master
-  schedule:
-    - cron: "*/15 * * * *"
-
+on: 
+  workflow_dispatch:
+  
 name: Grading-Script
 
 jobs:
