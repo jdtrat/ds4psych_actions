@@ -20,3 +20,4 @@ jobs:
       - name: Ping Mason
         run: |
           source("R/grading_script.R")
+        shell: Rscript {0}
